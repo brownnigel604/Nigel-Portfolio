@@ -1,0 +1,109 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0 auto;
+}
+
+.app-container {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  width: calc(100% - 200px);
+}
+
+#projects {
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#filters {
+  display: flex;
+  align-self: flex-start;
+  flex-direction: column;
+  margin-right: 1rem;
+  width: 200px;
+  background: rgba(196, 186, 186, 0.709);
+  border-radius: 25px;
+  padding: 1rem;
+}
+
+#filters h4 {
+  margin: 0 0 0.5rem 0;
+  margin-top: 10px;
+}
+
+#filters p {
+  margin: 0 0 0.25rem 0;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#filters p i {
+  margin-left: auto;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#filters ul {
+  padding: 0;
+  margin: 0;
+}
+
+#filters li {
+  list-style: none;
+  margin: 0;
+  cursor: pointer;
+}
+
+#filters li:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.project {
+  width: 500px;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  border: 1px solid grey;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 0.7rem;
+}
+
+.project-tag {
+  width: 100%;
+  padding: 0.3rem;
+  margin: 0.2rem;
+  border-radius: 0.2rem;
+  background-color: rgba(0, 0, 0, 0.148);
+}
+
+footer {
+  bottom: 0;
+  margin-top: auto;
+  margin-left: auto;
+}

@@ -1,0 +1,89 @@
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<div class="app-container">
+  <header>
+    <h1>Welcome to {{ title }}!</h1>
+  </header>
+  <main>
+    <section id="projects">
+      <div
+        *ngFor="let project of projects"
+        [class.hidden]="
+          categoryFilter && project.category?.id != categoryFilter.id
+        "
+        class="project"
+      >
+        <h2>{{ project.title | uppercase }}</h2>
+        <p>{{ project.excerpt }}</p>
+        <p *ngIf="project.category">
+          Category:
+          <span
+            (click)="setCategoryFilter(project.category)"
+            style="cursor: pointer"
+            >{{ project.category.name }}</span
+          >
+        </p>
+        <p *ngIf="project.tags && project.tags.length > 0">
+          Tags:
+          <span
+            *ngFor="let tag of project.tags"
+            class="project-tag"
+            style="cursor: pointer"
+            >{{ tag.name }}
+          </span>
+        </p>
+      </div>
+    </section>
+    <section id="filters">
+      <h3 *ngIf="categoryFilter || tagFilter">Filters:</h3>
+      <p *ngIf="categoryFilter">
+        <span
+          >{{ categoryFilter.name }}
+          <i
+            style="font-size: 16px; cursor: pointer"
+            class="fa"
+            (click)="clearFilters()"
+            >&#xf014;</i
+          ></span
+        >
+      </p>
+      <p *ngIf="tagFilter">
+        <span
+          >{{ tagFilter.name }}
+          <i
+            style="font-size: 16px; cursor: pointer"
+            class="fa"
+            (click)="clearFilters()"
+            >&#xf014;</i
+          ></span
+        >
+      </p>
+      <h4>Categories</h4>
+      <ul>
+        <li
+          (click)="setCategoryFilter(category)"
+          *ngFor="let category of categories"
+          [ngClass]="{
+            active: categoryFilter && category.id == categoryFilter.id,
+            inactive: !categoryFilter || category.id !== categoryFilter.id
+          }"
+        >
+          {{ category.name }}
+        </li>
+      </ul>
+      <h4>Tags</h4>
+      <ul>
+        <li (click)="setTagFilter(tag)" *ngFor="let tag of tags">
+          {{ tag.name }}
+        </li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; {{ date }} {{ author }}</p>
+  </footer>
+</div>
+
+<router-outlet />
