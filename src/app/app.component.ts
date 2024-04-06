@@ -23,26 +23,35 @@ export class AppComponent {
   title = 'Angular-A01';
   date: number | undefined;
   author: string[] = [];
+  description: string | undefined;
   categoryFilter: Category | undefined;
   tagFilter: Tag | undefined;
+  contact: string | undefined;
 
   constructor() {
     const currentDate = new Date();
     this.date = currentDate.getFullYear();
-    this.author = ['Nigel'];
+    this.author = ['Nigel Brown'];
+    this.description = 'I am a Software Systems Developer student at BCIT studying Full Stack Web Development. ';
+    this.contact = 'Visit my LinkedIn!';
   }
 
   setCategoryFilter(category: Category) {
-    this.categoryFilter = category;
+    // Toggle category filter
+    if (this.categoryFilter && this.categoryFilter.id === category.id) {
+      this.categoryFilter = undefined; // Deselect category
+    } else {
+      this.categoryFilter = category; // Select category
+    }
   }
 
   setTagFilter(tag: Tag) {
-    this.tagFilter = tag;
-  }
-
-  clearFilters() {
-    this.categoryFilter = undefined;
-    this.tagFilter = undefined;
+    // Toggle tag filter
+    if (this.tagFilter && this.tagFilter.id === tag.id) {
+      this.tagFilter = undefined; // Deselect tag
+    } else {
+      this.tagFilter = tag; // Select tag
+    }
   }
 
   clearCategoryFilter() {

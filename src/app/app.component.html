@@ -4,20 +4,27 @@
 />
 <div class="app-container">
   <header>
-    <h1>Welcome to {{ title }}!</h1>
+    <section id="about-me-container">
+      <div id="profile-picture-container">
+        <img
+          id="profile-picture"
+          src="../assets/images/nigel-portrait.JPG"
+          alt="Profile Picture"
+        />
+      </div>
+      <h1>{{ author }}</h1>
+      <p id="about-me-description">{{ description }}</p>
+      <a
+        id="contact"
+        href="https://www.linkedin.com/in/nigel-brown-541988b9/"
+        >{{ contact }}</a
+      >
+    </section>
   </header>
   <main>
-    <section id="projects">
-      <app-projects
-        [categoryFilter]="categoryFilter"
-        (newCategoryFilterEvent)="setCategoryFilter($event)"
-        [tagFilter]="tagFilter"
-        (newTagFilterEvent)="setTagFilter($event)"
-      >
-      </app-projects>
-    </section>
+    <h2>My Projects</h2>
     <section id="filters">
-      <h3 *ngIf="categoryFilter || tagFilter">Filters:</h3>
+      <!-- <h3 *ngIf="categoryFilter || tagFilter">Filter By:</h3>
       <p *ngIf="categoryFilter">
         <span
           >{{ categoryFilter.name }}
@@ -39,19 +46,30 @@
             >&#xf014;</i
           ></span
         >
-      </p>
-      <div id="categories">
-        <app-categories
-          [categoryFilter]="categoryFilter"
-          (newCategoryFilterEvent)="setCategoryFilter($event)"
-        ></app-categories>
+      </p> -->
+      <div id="categories-tags-container">
+        <div id="categories">
+          <app-categories
+            [categoryFilter]="categoryFilter"
+            (newCategoryFilterEvent)="setCategoryFilter($event)"
+          ></app-categories>
+        </div>
+        <div id="tags">
+          <app-tags
+            [tagFilter]="tagFilter"
+            (newTagFilterEvent)="setTagFilter($event)"
+          ></app-tags>
+        </div>
       </div>
-      <div id="tags">
-        <app-tags
-          [tagFilter]="tagFilter"
-          (newTagFilterEvent)="setTagFilter($event)"
-        ></app-tags>
-      </div>
+    </section>
+    <section id="projects-container">
+      <app-projects
+        [categoryFilter]="categoryFilter"
+        (newCategoryFilterEvent)="setCategoryFilter($event)"
+        [tagFilter]="tagFilter"
+        (newTagFilterEvent)="setTagFilter($event)"
+      >
+      </app-projects>
     </section>
   </main>
   <footer>
