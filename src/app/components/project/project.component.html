@@ -1,0 +1,22 @@
+<article *ngIf="project">
+  <button type="button" (click)="goBack()"></button>
+  <section id="project-card">
+    <h2>{{ project.title | uppercase }}</h2>
+    <img
+      *ngIf="project?.image"
+      [src]="'assets/images/' + project.image"
+      alt="Image of {{ project.title }}"
+    />
+    <p>{{ project.excerpt }}</p>
+    <p *ngIf="project?.category">
+      Category:
+      <span>{{ project.category?.name }}</span>
+    </p>
+    <p *ngIf="project?.tags && project?.tags.length > 0">
+      Tags:
+      <span *ngFor="let tag of project?.tags" class="project-tag">{{
+        tag.name
+      }}</span>
+    </p>
+  </section>
+</article>

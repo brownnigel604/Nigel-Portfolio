@@ -24,29 +24,6 @@
   <main>
     <h2>My Projects</h2>
     <section id="filters">
-      <!-- <h3 *ngIf="categoryFilter || tagFilter">Filter By:</h3>
-      <p *ngIf="categoryFilter">
-        <span
-          >{{ categoryFilter.name }}
-          <i
-            style="font-size: 16px; cursor: pointer"
-            class="fa"
-            (click)="clearCategoryFilter()"
-            >&#xf014;</i
-          ></span
-        >
-      </p>
-      <p *ngIf="tagFilter">
-        <span
-          >{{ tagFilter.name }}
-          <i
-            style="font-size: 16px; cursor: pointer"
-            class="fa"
-            (click)="clearTagFilter()"
-            >&#xf014;</i
-          ></span
-        >
-      </p> -->
       <div id="categories-tags-container">
         <div id="categories">
           <app-categories
@@ -62,15 +39,21 @@
         </div>
       </div>
     </section>
-    <section id="projects-container">
+    <router-outlet></router-outlet>
+    <!-- <section id="projects-container" *ngIf="!selectedProject">
       <app-projects
         [categoryFilter]="categoryFilter"
         (newCategoryFilterEvent)="setCategoryFilter($event)"
         [tagFilter]="tagFilter"
         (newTagFilterEvent)="setTagFilter($event)"
+        (newSelectedProjectEvent)="setSelectedProject($event)"
       >
       </app-projects>
     </section>
+    <section id="project" *ngIf="selectedProject">
+      <button (click)="clearSelectedProject()">Back</button>
+      <app-project [project]="selectedProject"></app-project>
+    </section> -->
   </main>
   <footer>
     <p>&copy; {{ date }} {{ author }}</p>

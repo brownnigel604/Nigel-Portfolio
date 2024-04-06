@@ -1,11 +1,17 @@
 <article
-  class="project"
   *ngFor="let project of projects | projectFilter : tagFilter"
+  [class.hidden]="tagFilter && project.category?.id != tagFilter.id"
+  (click)="setSelectedProject(project)"
 >
   <ng-container
     *ngIf="!categoryFilter || project.category?.id === categoryFilter.id"
   >
     <h2>{{ project.title | uppercase }}</h2>
+    <img
+      *ngIf="project.image"
+      [src]="'assets/images/' + project.image"
+      alt="Image of {{ project.title }}"
+    />
     <p>{{ project.excerpt }}</p>
     <p *ngIf="project.category">
       Category:

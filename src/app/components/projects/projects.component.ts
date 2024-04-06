@@ -1,23 +1,26 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
-import { ProjectFilterPipe } from '../project-filter.pipe';
+import { ProjectFilterPipe } from '../../pipes/project-filter.pipe';
 
-import { Category } from '../model/categories';
-import { Tag } from '../model/tags';
+import { Category } from '../../model/categories';
+import { Tag } from '../../model/tags';
 
-import { ProjectService } from '../project.service';
-import { Project } from '../model/projects';
+import { ProjectService } from '../../services/project.service';
+import { Project } from '../../model/projects';
+
+import { ProjectComponent } from '../project/project.component';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, ProjectFilterPipe],
+  imports: [CommonModule, ProjectFilterPipe, ProjectComponent],
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.css'
 })
 export class ProjectsComponent {
-  constructor(private projectService: ProjectService) { }
+  constructor(private projectService: ProjectService, private router: Router) { }
 
   projects: Project[] = [];
   getProjects(): void {
@@ -41,5 +44,14 @@ export class ProjectsComponent {
   setTagFilter(tag: Tag) {
     this.tagFilter = tag;
     this.newTagFilterEvent.emit(tag);
+  }
+
+  selectedProject?: Project;
+
+  @Output() newSelectedProjectEvent = new EventEmitter<Project>();
+
+  setSelectedProject(project: Project): void {
+    this.newSelectedProjectEvent.emit(project);
+    this.router.navigate(['/projects', project.id]);
   }
 }
