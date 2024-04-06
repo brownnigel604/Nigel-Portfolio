@@ -1,21 +1,25 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
-import { ProjectsComponent } from './projects/projects.component';
-import { CategoriesComponent } from './categories/categories.component';
-import { TagsComponent } from './tags/tags.component';
+import { ProjectComponent } from './components/project/project.component';
+import { ProjectsComponent } from './components/projects/projects.component';
+
+import { CategoriesComponent } from './components/categories/categories.component';
+import { TagsComponent } from './components/tags/tags.component';
 
 import { Category } from './model/categories';
 import { Tag } from './model/tags';
+import { Project } from './model/projects';
 
-import { CommonModule } from '@angular/common';
-import { ProjectFilterPipe } from './project-filter.pipe';
+
+import { ProjectFilterPipe } from './pipes/project-filter.pipe';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, ProjectFilterPipe, ProjectsComponent, CategoriesComponent, TagsComponent],
+  imports: [CommonModule, RouterOutlet, ProjectFilterPipe, ProjectsComponent, ProjectComponent, CategoriesComponent, TagsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -60,5 +64,15 @@ export class AppComponent {
 
   clearTagFilter() {
     this.tagFilter = undefined;
+  }
+
+  selectedProject?: Project;
+
+  setSelectedProject(project: Project) {
+    this.selectedProject = project;
+  }
+
+  clearSelectedProject() {
+    this.selectedProject = undefined;
   }
 }
