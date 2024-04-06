@@ -1,0 +1,14 @@
+<h4>Categories</h4>
+<ul>
+  <li
+    *ngFor="let category of categories"
+    [ngClass]="{
+      active: categoryFilter && category.id == categoryFilter.id,
+      inactive: !categoryFilter || category.id !== categoryFilter.id
+    }"
+    (click)="setCategoryFilter(category)"
+    style="cursor: pointer"
+  >
+    {{ category.name }}
+  </li>
+</ul>

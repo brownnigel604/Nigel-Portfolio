@@ -1,0 +1,26 @@
+<div *ngFor="let project of projects | projectFilter : tagFilter">
+  <ng-container
+    *ngIf="!categoryFilter || project.category?.id === categoryFilter.id"
+  >
+    <h2>{{ project.title | uppercase }}</h2>
+    <p>{{ project.excerpt }}</p>
+    <p *ngIf="project.category">
+      Category:
+      <span
+        (click)="setCategoryFilter(project.category)"
+        style="cursor: pointer"
+        >{{ project.category.name }}</span
+      >
+    </p>
+    <p *ngIf="project.tags && project.tags.length > 0">
+      Tags:
+      <span
+        *ngFor="let tag of project.tags"
+        class="project-tag"
+        style="cursor: pointer"
+        (click)="setTagFilter(tag)"
+        >{{ tag.name }}</span
+      >
+    </p>
+  </ng-container>
+</div>
