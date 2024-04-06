@@ -14,6 +14,7 @@ export class TagsComponent {
   constructor(private tagService: TagService) { }
 
   tags: Tag[] = [];
+
   getTags(): void {
     this.tags = this.tagService.getTags();
   }
@@ -25,8 +26,8 @@ export class TagsComponent {
   @Input() tagFilter: Tag | undefined;
   @Output() newTagFilterEvent = new EventEmitter<Tag>();
 
-  setTagFilter(tag: Tag) {
+  setTagFilter(tag: Tag): void {
     this.tagFilter = tag;
-    this.newTagFilterEvent.emit(tag);
+    this.newTagFilterEvent.emit(tag); // Emit the tag filter to the parent component
   }
 }

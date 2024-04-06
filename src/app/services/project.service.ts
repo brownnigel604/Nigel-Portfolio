@@ -15,4 +15,10 @@ export class ProjectService {
   getProject(id: number): Project {
     return PROJECTS.find((project) => project.id === id)!;
   }
+  getProjectsByCategory(slug: string): Observable<Project[]> {
+    const projects = PROJECTS.filter(
+      (project) => project.category?.slug === slug
+    )!;
+    return of (projects);
+  }
 }
