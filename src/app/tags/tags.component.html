@@ -1,8 +1,12 @@
 <h4>Tags</h4>
 <ul>
   <li
-    (click)="setTagFilter(tag)"
     *ngFor="let tag of tags"
+    [ngClass]="{
+      active: tagFilter && tag.id == tagFilter.id,
+      inactive: !tagFilter || tag.id !== tagFilter.id
+    }"
+    (click)="setTagFilter(tag)"
     style="cursor: pointer"
   >
     {{ tag.name }}

@@ -1,4 +1,7 @@
-<div *ngFor="let project of projects | projectFilter : tagFilter">
+<article
+  class="project"
+  *ngFor="let project of projects | projectFilter : tagFilter"
+>
   <ng-container
     *ngIf="!categoryFilter || project.category?.id === categoryFilter.id"
   >
@@ -23,4 +26,4 @@
       >
     </p>
   </ng-container>
-</div>
+</article>
