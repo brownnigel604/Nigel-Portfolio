@@ -73,20 +73,17 @@ const PROJECTS: Project[] = [
       {
         "id": 1,
         "name": "HTML",
-        "slug": "html",
-        "pivot": { "projects_id": 1, "tags_id": 1 }
+        "slug": "html"
       },
       {
         "id": 2,
         "name": "CSS",
-        "slug": "css",
-        "pivot": { "projects_id": 1, "tags_id": 2 }
+        "slug": "css"
       },
       {
-        "id": 3,
+        "id": 4,
         "name": "Javascript",
-        "slug": "javascript",
-        "pivot": { "projects_id": 1, "tags_id": 4 }
+        "slug": "javascript"
       }
     ]
   },
@@ -106,16 +103,14 @@ const PROJECTS: Project[] = [
     "category": { "id": 2, "slug": "backend", "name": "Backend" },
     "tags": [
       {
-        "id": 1,
+        "id": 5,
         "name": "C#",
-        "slug": "csharp",
-        "pivot": { "projects_id": 1, "tags_id": 5 }
+        "slug": "csharp"
       },
       {
-        "id": 2,
+        "id": 7,
         "name": "Database",
         "slug": "database",
-        "pivot": { "projects_id": 1, "tags_id": 7 }
       }
     ]
   },
@@ -135,16 +130,14 @@ const PROJECTS: Project[] = [
     "category": { "id": 1, "slug": "frontend", "name": "Frontend" },
     "tags": [
       {
-        "id": 1,
+        "id": 2,
         "name": "CSS",
-        "slug": "css",
-        "pivot": { "projects_id": 1, "tags_id": 2 }
+        "slug": "css"
       },
       {
-        "id": 2,
+        "id": 6,
         "name": "React",
-        "slug": "react",
-        "pivot": { "projects_id": 1, "tags_id": 6 }
+        "slug": "react"
       }
     ]
   },
@@ -166,32 +159,27 @@ const PROJECTS: Project[] = [
       {
         "id": 1,
         "name": "HTML",
-        "slug": "html",
-        "pivot": { "projects_id": 1, "tags_id": 1 }
+        "slug": "html"
       },
       {
         "id": 2,
         "name": "CSS",
-        "slug": "css",
-        "pivot": { "projects_id": 1, "tags_id": 2 }
-      },
-      {
-        "id": 3,
-        "name": "Javascript",
-        "slug": "javascript",
-        "pivot": { "projects_id": 1, "tags_id": 4 }
+        "slug": "css"
       },
       {
         "id": 4,
-        "name": "React",
-        "slug": "react",
-        "pivot": { "projects_id": 1, "tags_id": 6 }
+        "name": "Javascript",
+        "slug": "javascript"
       },
       {
-        "id": 5,
+        "id": 6,
+        "name": "React",
+        "slug": "react"
+      },
+      {
+        "id": 7,
         "name": "Database",
-        "slug": "database",
-        "pivot": { "projects_id": 1, "tags_id": 7 }
+        "slug": "database"
       }
     ]
   },
@@ -213,14 +201,12 @@ const PROJECTS: Project[] = [
       {
         "id": 1,
         "name": "HTML",
-        "slug": "html",
-        "pivot": { "projects_id": 1, "tags_id": 1 }
+        "slug": "html"
       },
       {
         "id": 2,
         "name": "CSS",
-        "slug": "css",
-        "pivot": { "projects_id": 1, "tags_id": 2 }
+        "slug": "css"
       }
     ]
   },
@@ -242,14 +228,12 @@ const PROJECTS: Project[] = [
       {
         "id": 1,
         "name": "HTML",
-        "slug": "html",
-        "pivot": { "projects_id": 1, "tags_id": 1 }
+        "slug": "html"
       },
       {
-        "id": 2,
+        "id": 3,
         "name": "SASS",
-        "slug": "sass",
-        "pivot": { "projects_id": 1, "tags_id": 3 }
+        "slug": "sass"
       },
     ]
   }
@@ -265,7 +249,7 @@ const PROJECTS: Project[] = [
 export class AppComponent {
   title = 'Angular-A01';
   date: number | undefined;
-  author: string [] = [];
+  author: string[] = [];
   public categories = CATEGORIES;
   public tags = TAGS;
   public projects = PROJECTS;
@@ -275,22 +259,17 @@ export class AppComponent {
   constructor() {
     const currentDate = new Date();
     this.date = currentDate.getFullYear();
-    this.author = ["Nigel", " Kai"];
+    this.author = ['Nigel'];
   }
 
   setCategoryFilter(category: Category) {
     this.projects = PROJECTS.filter((project) => project.category?.id === category.id);
     this.categoryFilter = category;
     this.tagFilter = undefined;
-
   }
 
   setTagFilter(tag: Tag) {
-    this.projects = PROJECTS.filter((project) =>
-    project.tags?.some((projectTag) => projectTag.id === tag.id)
-  );
     this.tagFilter = tag;
-    this.categoryFilter = undefined;
   }
 
   clearFilters() {

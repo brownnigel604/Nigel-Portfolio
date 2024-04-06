@@ -9,7 +9,7 @@
   <main>
     <section id="projects">
       <div
-        *ngFor="let project of projects"
+        *ngFor="let project of projects | projectFilter : tagFilter"
         [class.hidden]="
           categoryFilter && project.category?.id != categoryFilter.id
         "
