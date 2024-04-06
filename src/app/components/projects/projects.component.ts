@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
@@ -19,12 +19,14 @@ import { ProjectComponent } from '../project/project.component';
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.css'
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements OnInit{
   constructor(private projectService: ProjectService, private router: Router) { }
 
   projects: Project[] = [];
   getProjects(): void {
-    this.projects = this.projectService.getProjects();
+    this.projectService
+      .getProjects()
+      .subscribe((projects) => this.projects = projects)
   }
 
   ngOnInit(){
