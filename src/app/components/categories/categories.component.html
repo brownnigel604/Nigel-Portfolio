@@ -6,7 +6,7 @@
       active: categoryFilter && category.id == categoryFilter.id,
       inactive: !categoryFilter || category.id !== categoryFilter.id
     }"
-    (click)="setCategoryFilter(category)"
+    (click)="navigateToCategory(category)"
     style="cursor: pointer"
   >
     {{ category.name }}

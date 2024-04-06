@@ -1,7 +1,6 @@
 <article
   *ngFor="let project of projects | projectFilter : tagFilter"
   [class.hidden]="tagFilter && project.category?.id != tagFilter.id"
-  (click)="setSelectedProject(project)"
 >
   <ng-container
     *ngIf="!categoryFilter || project.category?.id === categoryFilter.id"
@@ -11,14 +10,13 @@
       *ngIf="project.image"
       [src]="'assets/images/' + project.image"
       alt="Image of {{ project.title }}"
+      (click)="setSelectedProject(project)"
     />
     <p>{{ project.excerpt }}</p>
     <p *ngIf="project.category">
       Category:
-      <span
-        (click)="setCategoryFilter(project.category)"
-        style="cursor: pointer"
-        >{{ project.category.name }}</span
+      <a [href]="'/projects/categories/' + project.category.slug">
+        {{ project.category.name }}</a
       >
     </p>
     <p *ngIf="project.tags && project.tags.length > 0">

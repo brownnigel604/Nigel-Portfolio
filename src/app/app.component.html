@@ -31,33 +31,19 @@
             (newCategoryFilterEvent)="setCategoryFilter($event)"
           ></app-categories>
         </div>
-        <div id="tags">
+        <!-- <div id="tags">
           <app-tags
             [tagFilter]="tagFilter"
             (newTagFilterEvent)="setTagFilter($event)"
           ></app-tags>
-        </div>
+        </div> -->
       </div>
     </section>
     <router-outlet></router-outlet>
-    <!-- <section id="projects-container" *ngIf="!selectedProject">
-      <app-projects
-        [categoryFilter]="categoryFilter"
-        (newCategoryFilterEvent)="setCategoryFilter($event)"
-        [tagFilter]="tagFilter"
-        (newTagFilterEvent)="setTagFilter($event)"
-        (newSelectedProjectEvent)="setSelectedProject($event)"
-      >
-      </app-projects>
-    </section>
-    <section id="project" *ngIf="selectedProject">
-      <button (click)="clearSelectedProject()">Back</button>
-      <app-project [project]="selectedProject"></app-project>
-    </section> -->
   </main>
-  <footer>
-    <p>&copy; {{ date }} {{ author }}</p>
-  </footer>
 </div>
 
 <router-outlet />
+<footer>
+  <p>&copy; {{ date }} {{ author }}</p>
+</footer>
