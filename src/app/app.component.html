@@ -8,33 +8,13 @@
   </header>
   <main>
     <section id="projects">
-      <div
-        *ngFor="let project of projects | projectFilter : tagFilter"
-        [class.hidden]="
-          categoryFilter && project.category?.id != categoryFilter.id
-        "
-        class="project"
+      <app-projects
+        [categoryFilter]="categoryFilter"
+        (newCategoryFilterEvent)="setCategoryFilter($event)"
+        [tagFilter]="tagFilter"
+        (newTagFilterEvent)="setTagFilter($event)"
       >
-        <h2>{{ project.title | uppercase }}</h2>
-        <p>{{ project.excerpt }}</p>
-        <p *ngIf="project.category">
-          Category:
-          <span
-            (click)="setCategoryFilter(project.category)"
-            style="cursor: pointer"
-            >{{ project.category.name }}</span
-          >
-        </p>
-        <p *ngIf="project.tags && project.tags.length > 0">
-          Tags:
-          <span
-            *ngFor="let tag of project.tags"
-            class="project-tag"
-            style="cursor: pointer"
-            >{{ tag.name }}
-          </span>
-        </p>
-      </div>
+      </app-projects>
     </section>
     <section id="filters">
       <h3 *ngIf="categoryFilter || tagFilter">Filters:</h3>
@@ -44,7 +24,7 @@
           <i
             style="font-size: 16px; cursor: pointer"
             class="fa"
-            (click)="clearFilters()"
+            (click)="clearCategoryFilter()"
             >&#xf014;</i
           ></span
         >
@@ -55,30 +35,23 @@
           <i
             style="font-size: 16px; cursor: pointer"
             class="fa"
-            (click)="clearFilters()"
+            (click)="clearTagFilter()"
             >&#xf014;</i
           ></span
         >
       </p>
-      <h4>Categories</h4>
-      <ul>
-        <li
-          (click)="setCategoryFilter(category)"
-          *ngFor="let category of categories"
-          [ngClass]="{
-            active: categoryFilter && category.id == categoryFilter.id,
-            inactive: !categoryFilter || category.id !== categoryFilter.id
-          }"
-        >
-          {{ category.name }}
-        </li>
-      </ul>
-      <h4>Tags</h4>
-      <ul>
-        <li (click)="setTagFilter(tag)" *ngFor="let tag of tags">
-          {{ tag.name }}
-        </li>
-      </ul>
+      <div id="categories">
+        <app-categories
+          [categoryFilter]="categoryFilter"
+          (newCategoryFilterEvent)="setCategoryFilter($event)"
+        ></app-categories>
+      </div>
+      <div id="tags">
+        <app-tags
+          [tagFilter]="tagFilter"
+          (newTagFilterEvent)="setTagFilter($event)"
+        ></app-tags>
+      </div>
     </section>
   </main>
   <footer>
