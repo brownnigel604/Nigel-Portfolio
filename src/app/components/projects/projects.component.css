@@ -79,8 +79,13 @@ img {
   }
 
   .project-container:hover {
-    transform: scale(1.02);
-    /* background-color: rgb(237, 221, 252); */
+    transform: scale(1.05);
+    background-color: rgb(237, 221, 252);
+  }
+
+  .project-container:hover .project-excerpt,
+  .project-container:hover .category {
+    display: none; /* Hide everything except the title on hover */
   }
 
   img {

@@ -1,13 +1,27 @@
 <ul>
+  <li>
+    <a
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      ariaCurrentWhenActive="page"
+      >All</a
+    >
+  </li>
   <li
     *ngFor="let category of categories"
     [ngClass]="{
       active: categoryFilter && category.id === categoryFilter.id,
       inactive: !categoryFilter || category.id !== categoryFilter.id
     }"
-    (click)="navigateToCategory(category)"
-    style="cursor: pointer"
+    (click)="setCategoryFilter(category)"
   >
-    {{ category.name }}
+    <a
+      [routerLink]="['/projects/categories', category.slug]"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: false }"
+    >
+      {{ category.name }}
+    </a>
   </li>
 </ul>
