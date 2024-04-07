@@ -1,33 +1,44 @@
-<article
-  *ngFor="let project of projects | projectFilter : tagFilter"
-  [class.hidden]="tagFilter && project.category?.id != tagFilter.id"
->
-  <ng-container
-    *ngIf="!categoryFilter || project.category?.id === categoryFilter.id"
+<div id="projects-container">
+  <article
+    *ngFor="let project of projects | projectFilter : tagFilter"
+    [class.hidden]="tagFilter && project.category?.id != tagFilter.id"
   >
-    <h2>{{ project.title | uppercase }}</h2>
-    <img
-      *ngIf="project.image"
-      [src]="'assets/images/' + project.image"
-      alt="Image of {{ project.title }}"
-      (click)="setSelectedProject(project)"
-    />
-    <p>{{ project.excerpt }}</p>
-    <p *ngIf="project.category">
-      Category:
-      <a [href]="'/projects/categories/' + project.category.slug">
-        {{ project.category.name }}</a
-      >
-    </p>
-    <p *ngIf="project.tags && project.tags.length > 0">
-      Tags:
-      <span
-        *ngFor="let tag of project.tags"
-        class="project-tag"
-        style="cursor: pointer"
-        (click)="setTagFilter(tag)"
-        >{{ tag.name }}</span
-      >
-    </p>
-  </ng-container>
-</article>
+    <ng-container
+      *ngIf="!categoryFilter || project.category?.id === categoryFilter.id"
+    >
+      <div class="project-container">
+        <h2 class="project-title">{{ project.title | uppercase }}</h2>
+        <p class="project-excerpt">{{ project.excerpt }}</p>
+        <div class="image-container">
+          <img
+            *ngIf="project.home_image"
+            [src]="'assets/images/' + project.home_image"
+            alt="Image of {{ project.title }}"
+            (click)="setSelectedProject(project)"
+          />
+        </div>
+        <div class="content-container">
+          <p class="category" *ngIf="project.category">
+            Category:
+            <a [href]="'/projects/categories/' + project.category.slug">
+              {{ project.category.name }}</a
+            >
+          </p>
+          <hr />
+          <p
+            class="tag-container"
+            *ngIf="project.tags && project.tags.length > 0"
+          >
+            <span
+              *ngFor="let tag of project.tags"
+              class="project-tag"
+              style="cursor: pointer"
+              (click)="setTagFilter(tag)"
+              >{{ tag.name }}</span
+            >
+          </p>
+        </div>
+      </div>
+    </ng-container>
+  </article>
+</div>
