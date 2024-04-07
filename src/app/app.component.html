@@ -2,27 +2,34 @@
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&display=swap"
+  rel="stylesheet"
+/>
 <div class="app-container">
   <header>
     <section id="about-me-container">
-      <div id="profile-picture-container">
-        <img
-          id="profile-picture"
-          src="../assets/images/nigel-portrait.JPG"
-          alt="Profile Picture"
-        />
+      <div id="container">
+        <div id="profile-picture-container">
+          <img
+            id="profile-picture"
+            src="../assets/images/nigel-portrait.JPG"
+            alt="Profile Picture"
+          />
+        </div>
+        <h1 id="author">{{ author }}</h1>
+        <p id="about-me-description">{{ description }}</p>
+        <a
+          id="contact"
+          href="https://www.linkedin.com/in/nigel-brown-541988b9/"
+          >{{ contact }}</a
+        >
       </div>
-      <h1>{{ author }}</h1>
-      <p id="about-me-description">{{ description }}</p>
-      <a
-        id="contact"
-        href="https://www.linkedin.com/in/nigel-brown-541988b9/"
-        >{{ contact }}</a
-      >
     </section>
   </header>
   <main>
-    <h2>My Projects</h2>
     <section id="filters">
       <div id="categories-tags-container">
         <div id="categories">
@@ -31,12 +38,6 @@
             (newCategoryFilterEvent)="setCategoryFilter($event)"
           ></app-categories>
         </div>
-        <!-- <div id="tags">
-          <app-tags
-            [tagFilter]="tagFilter"
-            (newTagFilterEvent)="setTagFilter($event)"
-          ></app-tags>
-        </div> -->
       </div>
     </section>
     <router-outlet></router-outlet>
