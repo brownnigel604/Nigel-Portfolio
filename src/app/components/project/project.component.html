@@ -1,22 +1,36 @@
 <article *ngIf="project">
-  <button type="button" (click)="goBack()"></button>
+  <fa-icon
+    id="back-button"
+    [icon]="faArrowLeft"
+    [size]="'2x'"
+    (click)="goBack()"
+  ></fa-icon>
   <section id="project-card">
-    <h2>{{ project.title | uppercase }}</h2>
     <img
       *ngIf="project?.image"
       [src]="'assets/images/' + project.image"
       alt="Image of {{ project.title }}"
     />
-    <p>{{ project.excerpt }}</p>
-    <p *ngIf="project?.category">
-      Category:
-      <span>{{ project.category?.name }}</span>
-    </p>
-    <p *ngIf="project?.tags && project?.tags.length > 0">
-      Tags:
-      <span *ngFor="let tag of project?.tags" class="project-tag">{{
-        tag.name
-      }}</span>
-    </p>
+    <h2 id="project-title-detail">{{ project.title | uppercase }}</h2>
+    <div id="category-container">
+      <div id="type" *ngIf="project?.category">Category:</div>
+      <div>
+        <span>{{ project.category?.name }}</span>
+      </div>
+    </div>
+    <div id="language-container">
+      <div id="language" *ngIf="project?.tags && project?.tags.length > 0">
+        Languagues/Libraries/Frameworks:
+      </div>
+      <div>
+        <span
+          id="tags"
+          *ngFor="let tag of project?.tags; let last = last"
+          class="project-tag"
+          >{{ tag.name }} <span *ngIf="!last"> | </span></span
+        >
+      </div>
+    </div>
+    <p id="body-font">{{ project.body }}</p>
   </section>
 </article>

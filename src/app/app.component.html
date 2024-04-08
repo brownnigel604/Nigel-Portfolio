@@ -9,7 +9,7 @@
   rel="stylesheet"
 />
 <div class="app-container">
-  <header>
+  <header *ngIf="!isProjectsDetailPage()">
     <section id="about-me-container">
       <div id="container">
         <div id="profile-picture-container">
@@ -24,13 +24,15 @@
         <a
           id="contact"
           href="https://www.linkedin.com/in/nigel-brown-541988b9/"
+          target="_blank"
+          rel="noopener noreferrer"
           >{{ contact }}</a
         >
       </div>
     </section>
   </header>
   <main>
-    <section id="filters">
+    <section id="filters" *ngIf="!isProjectsDetailPage()">
       <div id="categories-tags-container">
         <div id="categories">
           <app-categories
