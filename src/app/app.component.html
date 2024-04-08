@@ -19,15 +19,19 @@
             alt="Profile Picture"
           />
         </div>
-        <h1 id="author">{{ author }}</h1>
-        <p id="about-me-description">{{ description }}</p>
-        <a
-          id="contact"
-          href="https://www.linkedin.com/in/nigel-brown-541988b9/"
-          target="_blank"
-          rel="noopener noreferrer"
-          >{{ contact }}</a
-        >
+        <div class="overflow-hidden">
+          <h1 class="title-drop-in" id="author">{{ author }}</h1>
+        </div>
+        <div id="desc-container" class="overflow-hidden">
+          <p class="drop-in-2" id="about-me-description">{{ description }}</p>
+          <a
+            id="contact"
+            href="https://www.linkedin.com/in/nigel-brown-541988b9/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >{{ contact }}</a
+          >
+        </div>
       </div>
     </section>
   </header>
