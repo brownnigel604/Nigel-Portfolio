@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router } from '@angular/router';
 
 import { ProjectComponent } from './components/project/project.component';
 import { ProjectsComponent } from './components/projects/projects.component';
@@ -32,12 +32,17 @@ export class AppComponent {
   tagFilter: Tag | undefined;
   contact: string | undefined;
 
-  constructor() {
+  constructor(private router: Router) {
     const currentDate = new Date();
     this.date = currentDate.getFullYear();
     this.author = ['Nigel Brown'];
-    this.description = 'I am a Software Systems Developer student at BCIT studying Full Stack Web Development. ';
+    this.description = "I'm currently a Software Systems Developer student at BCIT studying Full Stack Web Development. ";
     this.contact = 'Visit my LinkedIn!';
+  }
+
+  isProjectsDetailPage() {
+    const currentRoute = this.router.url;
+    return currentRoute.includes('/projects/') && !currentRoute.includes('/projects/categories/');
   }
 
   setCategoryFilter(category: Category) {
