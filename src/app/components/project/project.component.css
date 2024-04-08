@@ -50,6 +50,7 @@ h2 {
   margin-right: auto;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  cursor: pointer;
 }
 
 @media (min-width: 992px) {
