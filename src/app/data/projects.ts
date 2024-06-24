@@ -4,7 +4,7 @@ export const PROJECTS: Project[] = [
     {
       "id": 1,
       "title": "Hi-Low World!",
-      "link": null,
+      "link": "https://hilowworld.nigelbrown.lol/",
       "slug": "hi-low-world",
       "excerpt": "A simple game of Hi-Low built with HTML, CSS, and Javascript.",
       "body": '"Hi-Low World!" was a Javascript game developed to showcase the use of arrays, loops, and conditional statements. The game generates a random number between 1 and 4096, and the player must guess the number within a certain number of attempts. The game provides feedback on each guess, indicating whether the guess was too high or too low. The player wins by guessing the correct number within the allotted attempts. The game also includes a reset button to start a new game.',
