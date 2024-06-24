@@ -67,7 +67,7 @@ export const PROJECTS: Project[] = [
     {
       "id": 3,
       "title": "React Calculator",
-      "link": null,
+      "link": "https://react-calculator.nigelbrown.lol/",
       "slug": "react-calculator",
       "excerpt": 'A React application that showcases the use of React components, state management, and event handling.',
       "body": "The React Calculator application was developed to showcase the use of React components, state management, and event handling. The calculator allows users to perform basic arithmetic operations, such as addition, subtraction, multiplication, and division. The application includes a display area to show the current input and result, as well as buttons for entering numbers and operators. The React Calculator demonstrates the use of React hooks, such as useState and useEffect, to manage component state and side effects.",
