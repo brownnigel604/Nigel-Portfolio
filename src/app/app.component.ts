@@ -36,7 +36,7 @@ export class AppComponent {
     const currentDate = new Date();
     this.date = currentDate.getFullYear();
     this.author = ['Nigel Brown'];
-    this.description = "I'm currently a Software Systems Developer student at BCIT studying Full Stack Web Development. ";
+    this.description = "I am a recent BCIT graduate from the Software Systems Developer program and a passionate full-stack web developer, dedicated to creating and designing innovative web applications.";
     this.contact = 'Visit my LinkedIn!';
   }
 
