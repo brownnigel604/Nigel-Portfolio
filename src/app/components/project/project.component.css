@@ -19,6 +19,17 @@ h2 {
 
 #project-title-detail {
   font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.link-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+#project-link {
+  font-size: 1.2rem;
 }
 
 #type,

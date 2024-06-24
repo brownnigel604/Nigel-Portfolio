@@ -3,6 +3,7 @@ import { Category } from './categories';
 export interface Project {
     'id': number;
     'title': string;
+    'link': string | null;
     'slug': string;
     'excerpt': string;
     'body': string;

@@ -12,6 +12,12 @@
       alt="Image of {{ project.title }}"
     />
     <h2 id="project-title-detail">{{ project.title | uppercase }}</h2>
+    <div class="link-container">
+      <a id="project-link" *ngIf="project.link" [href]="project.link">{{
+        project.link
+      }}</a>
+    </div>
+
     <div id="category-container">
       <div id="type" *ngIf="project?.category">Category:</div>
       <div>
